@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP Media Studio | Portafolio</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Material Design Icons (MDI) -->
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.3.67/css/materialdesignicons.min.css" rel="stylesheet">
+    
+    <!-- AOS CSS (Animaciones al hacer scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Lottie Player -->
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.3/dist/dotlottie-wc.js" type="module"></script>
+
+    <!-- 
+      EL MASTER EQ: Sobreescritura de variables nativas de Bootstrap.
+      Cero clases CSS nuevas, solo recalibramos el núcleo para que las utilidades
+      nativas usen los colores de MCP Media Studio.
+    -->
+    <style>
+        [data-bs-theme="dark"] {
+            /* El Azul Marino del logo convertido en nuestro fondo oscuro */
+            --bs-body-bg: #14202D; 
+            /* Un azul marino ligeramente más claro para tarjetas (bg-dark) */
+            --bs-dark: #1F3347; 
+            --bs-dark-rgb: 31, 51, 71;
+            /* El Dorado/Arena del logo para los acentos (text-primary, bg-primary) */
+            --bs-primary: #D4AD86; 
+            --bs-primary-rgb: 212, 173, 134;
+            /* Un tono gris-azulado para textos secundarios */
+            --bs-secondary: #8DA3B5; 
+            --bs-border-color: #1F3347;
+        }
+
+        .ls-widest { letter-spacing: 0.25em; }
+        .ls-wide { letter-spacing: 0.1em; }
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+    </style>
+</head>
+<body class="text-light">
+
+    <!-- Navegación Minimalista -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent py-4 position-absolute w-100 z-3">
+        <div class="container">
+            <!-- Adaptación del Logo Textual -->
+            <a class="navbar-brand text-uppercase fw-bold ls-widest fs-5" href="#">
+                <i class="mdi mdi-play-outline text-primary me-1 fs-3 align-middle"></i>
+                <span class="text-primary">MCP</span> Studio
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="mdi mdi-menu fs-3 text-primary"></i>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link small text-uppercase ls-wide px-3" href="#work">Trabajo</a></li>
+                    <li class="nav-item"><a class="nav-link small text-uppercase ls-wide px-3" href="#services">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link small text-uppercase ls-wide px-3" href="#contact">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section Cinematográfico -->
+    <header class="min-vh-100 d-flex align-items-center position-relative overflow-hidden border-bottom border-dark border-2">
+        <!-- Lottie de fondo (Sutil y abstracto) -->
+        <div class="position-absolute top-50 start-50 translate-middle w-100 h-100 opacity-25" style="z-index: 1;">
+            <img src="/assets/Gemini_Generated_Image_jakoo0jakoo0jako.png" alt="Fondo Cinematográfico" class="w-100 h-100 object-fit-cover">
+        </div>
+
+        <div class="container position-relative" style="z-index: 2;">
+            <div class="row g-4">
+                <div class="col-lg-8" data-aos="fade-up" data-aos-duration="1200">
+                    <span class="small text-uppercase text-secondary fw-semibold border-start border-primary border-3 ps-3 ls-wide d-block mb-4">
+                       MCP Media Studio
+                    </span>
+                    <h1 class="display-2 fw-bold text-white mb-3" style="line-height: 1.1;">
+                        Producimos <br>
+                        <!-- Usamos text-primary para que Typed.js resalte con el Dorado del logo -->
+                        <span id="typed-text" class="text-primary fw-light"></span>
+                    </h1>
+                    <p class="text-secondary col-md-8 small text-uppercase ls-wide mt-4">
+                        Tú marca en buenas manos
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- seccion de Mision y Vision -->
+    <section id="mision-vision" class="py-5 my-5">
+        <div class="container py-4">
+            <div class="row mb-5" data-aos="fade-right">
+                <div class="col-12 text-center">
+                    <span class="small text-uppercase text-primary fw-semibold ls-widest d-block mb-2">Somos MCP Media Studio, una empresa dedicada a la producción de contenido audiovisual y marketing digital.</span>
+                </div>
+            </div>
+            <div class="row g-4" id="mision-vision-container">
+                <!-- Se inyecta con jQuery -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Servicios -->
+    <section id="services" class="py-5 my-5">
+        <div class="container py-4">
+            <div class="row mb-5" data-aos="fade-right">
+                <div class="col-12 text-center">
+                    <span class="small text-uppercase text-primary fw-semibold ls-widest d-block mb-2">¿Quiénes Somos?</span>
+                    <h6 class="display-6 fw-normal text-white">Lo que hacemos</h6>
+                </div>
+            </div>
+            <div class="row g-4" id="services-container">
+                <!-- Se inyecta con jQuery -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Grilla de Portafolio -->
+    <!-- Fíjate cómo al usar bg-dark ahora invoca tu Azul Marino corporativo -->
+    <section id="work" class="py-5 bg-dark border-top border-dark border-2">
+        <div class="container-fluid px-4 py-5">
+            <div class="row mb-5" data-aos="fade-down">
+                <div class="col-12 d-flex justify-content-between align-items-end">
+                    <div>
+                        <span class="small text-uppercase text-primary fw-semibold ls-widest d-block mb-2">Paquetes</span>
+                        <h6 class="display-6 fw-normal text-white mb-0">PUBLICIDAD PARA EMPRESA</h6>
+                    </div>
+                    <!-- <a href="#" class="btn btn-outline-primary btn-sm text-uppercase ls-wide rounded-0 px-4 py-2">Ver Todo</a> -->
+                </div>
+            </div>
+            <!-- Grilla dinámica -->
+            <div class="row g-3" id="portfolio-grid">
+                <!-- Se inyecta con jQuery -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Minimalista -->
+    <footer id="contact" class="py-5 border-top border-dark border-2">
+        <div class="container py-5 text-center" data-aos="zoom-in">
+            <h6 class="display-5 fw-bold text-white mb-4">¿Hablamos del proyecto?</h6>
+            <a href="mailto:mcpmediastudio@gmail.com" class="text-primary fs-4 text-decoration-none border-bottom border-primary pb-1 d-inline-block mb-5">
+                mcpmediastudio@gmail.com
+            </a>
+            <div class="d-flex justify-content-center gap-4 mt-4">
+                <a href="#" class="text-secondary text-decoration-none"><i class="mdi mdi-instagram fs-4 transition-hover"></i></a>
+                <a href="#" class="text-secondary text-decoration-none"><i class="mdi mdi-vimeo fs-4"></i></a>
+                <a href="#" class="text-secondary text-decoration-none"><i class="mdi mdi-linkedin fs-4"></i></a>
+            </div>
+            <p class="small text-uppercase text-secondary ls-wide mt-5 mb-0">&copy; 2026 MCP Media Studio. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts Esenciales -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <!-- Lógica de la Aplicación -->
+    <script>
+        $(document).ready(function() {
+            
+            //  Inicializar AOS (Transiciones por Scroll)
+            AOS.init({
+                once: true,
+                offset: 50,
+                duration: 800
+            });
+
+            // Inicializar Typed.js
+            new Typed('#typed-text', {
+                strings: ['la esencia.', 'la visión.', 'el momento.', 'la realidad.'],
+                typeSpeed: 70,
+                backSpeed: 40,
+                backDelay: 2500,
+                loop: true,
+                cursorChar: '|'
+            });
+
+            // Base de Datos de Servicios
+            const servicios = [
+                { icon: 'mdi-movie-open-play-outline', title: 'Producción Comercial', desc: 'Campañas visuales diseñadas para convertir y posicionar marcas en el mercado.' },
+                { icon: 'mdi-camera-outline', title: 'Fotografía Editorial', desc: 'Dirección de arte y captura de imágenes que cuentan la historia de tu producto.' },
+                { icon: 'mdi-monitor-edit', title: 'Post-Producción', desc: 'Edición de color, VFX y montaje rítmico para darle alma al material crudo.' }
+            ];
+
+            const $servicesContainer = $('#services-container');
+            $.each(servicios, function(index, srv) {
+                // Incorporamos los bordes sutiles y la sombra que te gusta, usando el azul oscuro (bg-dark)
+                const html = `
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="${index * 150}">
+                        <div class="card h-100 bg-dark border-0 shadow-sm rounded-0 p-4 transition-hover">
+                            <div class="card-body text-center text-md-start">
+                                <i class="mdi ${srv.icon} text-primary fs-1 mb-4 d-block opacity-75"></i>
+                                <h6 class="fw-bold text-white mb-3 text-uppercase ls-wide">${srv.title}</h6>
+                                <p class="text-secondary small mb-0">${srv.desc}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                $servicesContainer.append(html);
+            });
+
+            // Base de Datos de Mision y Vision
+
+            const misionVision = [
+                { icon: 'mdi-lightbulb-outline', title: 'Nuestro Proposito', desc: 'Impulsar la presencia digital de nuestros clientes con contenido auténtico, creativo y profesional.' },
+                { icon: 'mdi-cog-outline', title: '¿Cómo lo hacemos?', desc: 'Nos especializamos en crear videos, reels, fotografías y campañas publicitarias que ayudan a las marcas a destacar, conectar y crecer.' }
+            ];
+
+             const $misionVisionContainer = $('#mision-vision-container');
+            $.each(misionVision, function(index, mv) {
+                const html = `
+                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="${index * 150}">
+                        <div class="card h-100 bg-dark border-0 shadow-sm rounded-0 p-4 transition-hover">
+                            <div class="card-body text-center text-md-start">
+                                <i class="mdi ${mv.icon} text-primary fs-1 mb-4 d-block opacity-75"></i>
+                                <h6 class="fw-bold text-white mb-3 text-uppercase ls-wide">${mv.title}</h6>
+                                <p class="text-secondary small mb-0">${mv.desc}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                $misionVisionContainer.append(html);
+            });
+
+            // Base de Datos de Portafolio
+            const proyectos = [
+                { category: 'Comercial', client: 'Plan Básico', precio:'Q 2,000', detalles: ' 4 videos al mes, 5 reels al mes, 12 imágenes personalidzadas.', height: '400px', img: 'https://images.unsplash.com/photo-1556906781-9a412961c28c?auto=format&fit=crop&q=80&w=800' },
+            ];
+            
+            const $portfolioGrid = $('#portfolio-grid');
+            $.each(proyectos, function(index, proj) {
+                // Separamos el string por las comas para crear un Array de detalles
+                const listaDetalles = proj.detalles.split(',');
+                let detallesHTML = '<ul class="list-unstyled mt-4 mb-5">';
+                
+                // Iteramos sobre cada detalle para crear un <li> elegante
+                $.each(listaDetalles, function(i, detalle) {
+                    detallesHTML += `
+                        <li class="text-secondary small mb-3 d-flex align-items-center">
+                            <i class="mdi mdi-check-circle-outline text-primary me-3 fs-5"></i> 
+                            ${detalle.trim()}
+                        </li>
+                    `;
+                });
+                detallesHTML += '</ul>';
+
+                // Cambiamos el tamaño de columnas a col-md-6 para que queden como tarjetas de presentación grandes y legibles.
+                const html = `
+                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="${index * 150}">
+                        <div class="card bg-transparent border-dark border-2 rounded-0 overflow-hidden position-relative h-100 p-1">
+                            
+                            <!-- Fondo de imagen con muchísima menos opacidad (0.1) para priorizar la lectura -->
+                            <div class="position-absolute w-100 h-100 top-0 start-0" style="background-image: url('${proj.img}'); background-size: cover; background-position: center; opacity: 0.1; transition: opacity 0.4s ease;" onmouseover="this.style.opacity='0.3'" onmouseout="this.style.opacity='0.1'"></div>
+                            
+                            <!-- Contenido de la tarjeta posicionado por encima del fondo -->
+                            <div class="card-body p-5 d-flex flex-column position-relative" style="z-index: 2;">
+                                <div class="row">
+                                    <div class="col-9">
+                                        <span class="small text-uppercase text-primary fw-bold ls-widest mb-2 d-block">${proj.category}</span>
+                                        <h6 class="display-6 fw-bold text-white mb-0">${proj.client}</h6>
+                                    </div>
+                                    <div class="col-3 text-end">
+                                        <i class="mdi mdi-briefcase-outline text-primary fs-3 opacity-75"></i>
+                                        <div class="text-white small mt-2">${proj.precio}</div>
+                                    </div>
+                                </div>
+                                
+                                <hr class="border-secondary opacity-25 my-4">
+                                
+                                <!-- Aquí inyectamos la lista que generamos arriba -->
+                                ${detallesHTML}
+                                
+                                <!-- Precio -->
+                                <div class="mb-4 text-center">
+                                    <span class="h5 fw-bold text-white opacity-75">${proj.precio}</span>
+                                </div>
+                                
+                                <!-- Botón que se empuja hacia abajo con mt-auto -->
+                                <a href="#" class="btn btn-outline-primary btn-sm text-uppercase ls-wide w-100 mt-auto py-3 rounded-0">
+                                    Solicitar Propuesta
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                $portfolioGrid.append(html);
+            });
+        });
+    </script>
+</body>
+</html>
