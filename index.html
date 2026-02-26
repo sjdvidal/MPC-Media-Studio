@@ -119,6 +119,32 @@
         </div>
     </section>
 
+    <!-- SECCIÓN DE GALERÍA DE VIDEOS FILTRABLE -->
+    <section id="reel" class="py-5 bg-body border-top border-dark border-2">
+        <div class="container px-4 py-5">
+            <div class="row mb-4" data-aos="fade-right">
+                <div class="col-12 d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3">
+                    <div>
+                        <span class="small text-uppercase text-primary fw-semibold ls-widest d-block mb-2">Showreel</span>
+                        <h6 class="display-6 fw-normal text-white mb-0">Archivo Visual</h6>
+                    </div>
+                    
+                    <!-- Controles de Filtro -->
+                    <div class="d-flex flex-wrap gap-2" id="video-filters">
+                        <button class="btn btn-primary btn-sm text-uppercase ls-wide rounded-0 px-3 active" data-filter="all">Todo</button>
+                        <button class="btn btn-outline-primary btn-sm text-uppercase ls-wide rounded-0 px-3" data-filter="Comercial">Comercial</button>
+                        <button class="btn btn-outline-primary btn-sm text-uppercase ls-wide rounded-0 px-3" data-filter="Documental">Documental</button>
+                        <button class="btn btn-outline-primary btn-sm text-uppercase ls-wide rounded-0 px-3" data-filter="Evento">Eventos</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Grilla dinámica de Videos -->
+            <div class="row g-4" id="video-grid">
+                <!-- Se inyecta y filtra con jQuery -->
+            </div>
+        </div>
+    </section>
     <!-- Grilla de Portafolio -->
     <!-- Fíjate cómo al usar bg-dark ahora invoca tu Azul Marino corporativo -->
     <section id="work" class="py-5 bg-dark border-top border-dark border-2">
@@ -154,6 +180,20 @@
             <p class="small text-uppercase text-secondary ls-wide mt-5 mb-0">&copy; 2026 MCP Media Studio. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <!-- EL MODAL DE VIDEO -->
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content bg-transparent border-0">
+                <div class="modal-body p-0 position-relative">
+                    <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close" style="z-index: 10;"></button>
+                    <div class="ratio ratio-16x9 bg-black shadow-lg">
+                        <iframe id="videoPlayerIframe" src="" allow="autoplay; fullscreen" allowfullscreen class="border-0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts Esenciales -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -266,10 +306,6 @@
                                         <span class="small text-uppercase text-primary fw-bold ls-widest mb-2 d-block">${proj.category}</span>
                                         <h6 class="display-6 fw-bold text-white mb-0">${proj.client}</h6>
                                     </div>
-                                    <div class="col-3 text-end">
-                                        <i class="mdi mdi-briefcase-outline text-primary fs-3 opacity-75"></i>
-                                        <div class="text-white small mt-2">${proj.precio}</div>
-                                    </div>
                                 </div>
                                 
                                 <hr class="border-secondary opacity-25 my-4">
@@ -283,7 +319,7 @@
                                 </div>
                                 
                                 <!-- Botón que se empuja hacia abajo con mt-auto -->
-                                <a href="#" class="btn btn-outline-primary btn-sm text-uppercase ls-wide w-100 mt-auto py-3 rounded-0">
+                                <a href="#" class="btn btn-primary btn-sm text-uppercase ls-wide w-100 mt-auto py-3 rounded-0">
                                     Solicitar Propuesta
                                 </a>
                             </div>
@@ -292,6 +328,92 @@
                 `;
                 $portfolioGrid.append(html);
             });
+
+            // ==========================================
+            // 1. MOTOR DE VIDEOS (GALERÍA FILTRABLE)
+            // ==========================================
+            // He ampliado la base de datos para que veas cómo el filtro funciona perfectamente.
+            const videos = [
+                { categoria: 'Comercial', titulo: 'Lanzamiento Nike Air', img: 'https://images.unsplash.com/photo-1556906781-9a412961c28c?auto=format&fit=crop&q=80&w=800', url: 'https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1' },
+                { categoria: 'Documental', titulo: 'The North Face - Everest', img: 'https://images.unsplash.com/photo-1516655855035-d5215bcb5604?auto=format&fit=crop&q=80&w=800', url: 'https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1' },
+                { categoria: 'Evento', titulo: 'Conferencia Tech 2025', img: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80&w=800', url: 'https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1' },
+                { categoria: 'Comercial', titulo: 'Spot Coca-Cola Verano', img: 'https://images.unsplash.com/photo-1581044777550-4cfa60707c03?auto=format&fit=crop&q=80&w=800', url: 'https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1' },
+                { categoria: 'Documental', titulo: 'Artesanos del Café', img: 'https://images.unsplash.com/photo-1503376713635-43a9d45e43bc?auto=format&fit=crop&q=80&w=800', url: 'https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1' },
+                { categoria: 'Evento', titulo: 'Festival de Luces', img: 'https://images.unsplash.com/photo-1516655855035-d5215bcb5604?auto=format&fit=crop&q=80&w=800', url: 'https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1' }
+            ];
+
+            const $videoGrid = $('#video-grid');
+            
+            // Función constructora aislada. Recibe la categoría a mostrar.
+            function renderizarGaleria(filtroCategoria) {
+                // Vaciamos el contenedor (fadeOut para que no sea un golpe visual)
+                $videoGrid.hide().empty(); 
+
+                let contadorRetraso = 0; // Para la animación en cascada
+
+                $.each(videos, function(index, vid) {
+                    // Si el filtro es "all" o coincide con la categoría del video, lo renderizamos
+                    if (filtroCategoria === 'all' || vid.categoria === filtroCategoria) {
+                        
+                        // Añadimos una pequeña animación CSS propia de Bootstrap/jQuery para la carga
+                        const html = `
+                            <div class="col-md-6 col-lg-4" style="animation: fadeIn 0.5s ease forwards; opacity: 0; animation-delay: ${contadorRetraso * 0.1}s;">
+                                <div class="card bg-dark border-0 rounded-0 overflow-hidden position-relative shadow-sm h-100" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="${vid.url}">
+                                    <div class="ratio ratio-16x9">
+                                        <div class="w-100 h-100 zoom-hover" style="background-image: url('${vid.img}'); background-size: cover; background-position: center; opacity: 0.6;"></div>
+                                        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-25 transition-hover">
+                                            <i class="mdi mdi-play-circle-outline text-white opacity-75 display-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer bg-transparent border-0 p-4 position-absolute bottom-0 w-100 bg-gradient-dark">
+                                        <span class="small text-uppercase text-primary fw-bold ls-widest mb-1 d-block">${vid.categoria}</span>
+                                        <h6 class="text-white mb-0 text-truncate">${vid.titulo}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        $videoGrid.append(html);
+                        contadorRetraso++;
+                    }
+                });
+                
+                // Mostramos el contenedor con un fadeIn suave de jQuery
+                $videoGrid.fadeIn(400);
+            }
+
+            // Inicializamos la galería mostrando todos los videos
+            renderizarGaleria('all');
+
+            // Lógica de los botones de filtro
+            $('#video-filters button').on('click', function() {
+                // Quitamos la clase 'active' y 'btn-primary' a todos
+                $('#video-filters button').removeClass('active btn-primary').addClass('btn-outline-primary');
+                
+                // Se la agregamos solo al botón clickeado
+                $(this).removeClass('btn-outline-primary').addClass('active btn-primary');
+                
+                // Obtenemos el valor del filtro de nuestro atributo data-filter
+                const filtroSeleccionado = $(this).data('filter');
+                
+                // Re-renderizamos la galería
+                renderizarGaleria(filtroSeleccionado);
+            });
+
+            // Agregamos el keyframe de animación directamente por jQuery al head para no crear un archivo CSS
+            $("<style>@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }</style>").appendTo("head");
+
+            // Modal: Inyectar URL
+            $('#videoModal').on('show.bs.modal', function (event) {
+                const button = $(event.relatedTarget); 
+                const urlVideo = button.data('video-url'); 
+                $('#videoPlayerIframe').attr('src', urlVideo);
+            });
+
+            // Modal: Detener Video
+            $('#videoModal').on('hidden.bs.modal', function () {
+                $('#videoPlayerIframe').attr('src', '');
+            });
+
         });
     </script>
 </body>
