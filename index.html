@@ -75,7 +75,7 @@
         <div class="container position-relative" style="z-index: 2;">
             <div class="row g-4">
                 <div class="col-lg-8" data-aos="fade-up" data-aos-duration="1200">
-                    <span class="small text-uppercase text-secondary fw-semibold border-start border-primary border-3 ps-3 ls-wide d-block mb-4">
+                    <span class="small text-uppercase  fw-semibold border-start border-primary border-3 ps-3 ls-wide d-block mb-4">
                        MCP Media Studio
                     </span>
                     <h1 class="display-2 fw-bold text-white mb-3" style="line-height: 1.1;">
@@ -83,7 +83,7 @@
                         <!-- Usamos text-primary para que Typed.js resalte con el Dorado del logo -->
                         <span id="typed-text" class="text-primary fw-light"></span>
                     </h1>
-                    <p class="text-secondary col-md-8 small text-uppercase ls-wide mt-4">
+                    <p class="col-md-8 small text-uppercase ls-wide mt-4">
                         Tú marca en buenas manos
                     </p>
                 </div>
@@ -95,7 +95,7 @@
         <div class="container py-4">
             <div class="row mb-5" data-aos="fade-right">
                 <div class="col-12 text-center">
-                    <span class="small text-uppercase text-primary fw-semibold ls-widest d-block mb-2">Somos MCP Media Studio, una empresa dedicada a la producción de contenido audiovisual y marketing digital.</span>
+                    <span class="small text-uppercase text-primary fw-semibold ls-widest d-block mb-2">Somos una empresa dedicada <br> a la producción de contenido audiovisual y marketing digital.</span>
                 </div>
             </div>
             <div class="row g-4" id="mision-vision-container">
@@ -173,11 +173,11 @@
                 mcpmediastudio@gmail.com
             </a>
             <div class="d-flex justify-content-center gap-4 mt-4">
-                <a href="#" class="text-secondary text-decoration-none"><i class="mdi mdi-instagram fs-4 transition-hover"></i></a>
-                <a href="#" class="text-secondary text-decoration-none"><i class="mdi mdi-vimeo fs-4"></i></a>
-                <a href="#" class="text-secondary text-decoration-none"><i class="mdi mdi-linkedin fs-4"></i></a>
+                <a href="#" class="text-decoration-none"><i class="mdi mdi-instagram fs-4 transition-hover"></i></a>
+                <a href="#" class="text-decoration-none"><i class="mdi mdi-vimeo fs-4"></i></a>
+                <a href="#" class="text-decoration-none"><i class="mdi mdi-linkedin fs-4"></i></a>
             </div>
-            <p class="small text-uppercase text-secondary ls-wide mt-5 mb-0">&copy; 2026 MCP Media Studio. Todos los derechos reservados.</p>
+            <p class="small text-uppercase ls-wide mt-5 mb-0">&copy; 2026 MCP Media Studio. Todos los derechos reservados.</p>
         </div>
     </footer>
 
@@ -238,7 +238,7 @@
                             <div class="card-body text-center text-md-start">
                                 <i class="mdi ${srv.icon} text-primary fs-1 mb-4 d-block opacity-75"></i>
                                 <h6 class="fw-bold text-white mb-3 text-uppercase ls-wide">${srv.title}</h6>
-                                <p class="text-secondary small mb-0">${srv.desc}</p>
+                                <p class="small mb-0">${srv.desc}</p>
                             </div>
                         </div>
                     </div>
@@ -249,8 +249,8 @@
             // Base de Datos de Mision y Vision
 
             const misionVision = [
-                { icon: 'mdi-lightbulb-outline', title: 'Nuestro Proposito', desc: 'Impulsar la presencia digital de nuestros clientes con contenido auténtico, creativo y profesional.' },
-                { icon: 'mdi-cog-outline', title: '¿Cómo lo hacemos?', desc: 'Nos especializamos en crear videos, reels, fotografías y campañas publicitarias que ayudan a las marcas a destacar, conectar y crecer.' }
+                { icon: 'mdi-target-variant', title: 'Nuestro Proposito', desc: 'Impulsar la presencia digital de nuestros clientes con contenido auténtico, creativo y profesional.' },
+                { icon: 'mdi-lightbulb-on-outline', title: '¿Cómo lo hacemos?', desc: 'Nos especializamos en crear videos, reels, fotografías y campañas publicitarias que ayudan a las marcas a destacar, conectar y crecer.' }
             ];
 
              const $misionVisionContainer = $('#mision-vision-container');
@@ -260,8 +260,8 @@
                         <div class="card h-100 bg-dark border-0 shadow-sm rounded-0 p-4 transition-hover">
                             <div class="card-body text-center text-md-start">
                                 <i class="mdi ${mv.icon} text-primary fs-1 mb-4 d-block opacity-75"></i>
-                                <h6 class="fw-bold text-white mb-3 text-uppercase ls-wide">${mv.title}</h6>
-                                <p class="text-secondary small mb-0">${mv.desc}</p>
+                                <h6 class="fw-bold text-primary opacity-80 mb-3 text-uppercase ls-wide">${mv.title}</h6>
+                                <p class="small  mb-0">${mv.desc}</p>
                             </div>
                         </div>
                     </div>
@@ -283,7 +283,7 @@
                 // Iteramos sobre cada detalle para crear un <li> elegante
                 $.each(listaDetalles, function(i, detalle) {
                     detallesHTML += `
-                        <li class="text-secondary small mb-3 d-flex align-items-center">
+                        <li class="small mb-3 d-flex align-items-center">
                             <i class="mdi mdi-check-circle-outline text-primary me-3 fs-5"></i> 
                             ${detalle.trim()}
                         </li>
