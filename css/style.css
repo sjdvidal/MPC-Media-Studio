@@ -1,0 +1,23 @@
+[data-bs-theme="dark"] {
+        /* El Azul Marino del logo convertido en nuestro fondo oscuro */
+        --bs-body-bg: #14202D; 
+        /* Un azul marino ligeramente más claro para tarjetas (bg-dark) */
+        --bs-dark: #1F3347; 
+        --bs-dark-rgb: 31, 51, 71;
+        /* El Dorado/Arena del logo para los acentos (text-primary, bg-primary) */
+        --bs-primary: #D4AD86; 
+        --bs-primary-rgb: 212, 173, 134;
+        /* Un tono gris-azulado para textos secundarios */
+        --bs-secondary: #8DA3B5; 
+        --bs-border-color: #1F3347;
+}
+
+    .ls-widest { letter-spacing: 0.25em; }
+    .ls-wide { letter-spacing: 0.1em; }
+    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+
+    /* Se agrega el keyframe al final de JS aqui, para un mejor orden*/
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
