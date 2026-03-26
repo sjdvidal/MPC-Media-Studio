@@ -110,6 +110,86 @@ $(document).ready(function(){
     });
 
 
+    const $portfolioEmprendedores = $('#portfolio-emprendedores');
+    $.each(proyectosEmprendedores, function(index, proj) {
+    // Separamos el string por las comas para crear un Array de detalles
+            const listaDetalles = proj.detalles.split(',');
+            let detallesHTML = '<ul class="list-unstyled mt-4 mb-5">';
+                
+            // Iteramos sobre cada detalle para crear un <li> eleganteD">El 
+            $.each(listaDetalles, function(i, detalle) {
+                detallesHTML += `
+                    <li class="small mb-3 d-flex align-items-center">
+                        <i class="mdi mdi-check-circle-outline text-primary me-3 fs-5"></i> 
+                        ${detalle.trim()}
+                    </li>
+                `;
+            });
+            detallesHTML += '</ul>';
+
+            const html = `
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="${index * 150}">
+                    <div class="card bg-transparent border-dark border-2 rounded-0 overflow-hidden position-relative h-100 p-1">
+                            
+                        <!-- Fondo de imagen con muchísima menos opacidad (0.1) para priorizar la lectura -->
+                        <div class="position-absolute w-100 h-100 top-0 start-0" style="background-image: url('${proj.img}'); background-size: cover; background-position: center; opacity: 0.1; transition: opacity 0.4s ease;" onmouseover="this.style.opacity='0.3'" onmouseout="this.style.opacity='0.1'"></div>
+                            
+                        <!-- Contenido de la tarjeta posicionado por encima del fondo -->
+                        <div class="card-body p-5 d-flex flex-column position-relative" style="z-index: 2;">
+                            <div class="row">
+                                <div class="col-9">
+                                    <span class="small text-uppercase text-primary fw-bold ls-widest mb-2 d-block">${proj.category}</span>
+                                    <h6 class="display-6 fw-bold text-white mb-0">${proj.client}</h6>
+                                </div>
+                            </div>
+                                
+                            <hr class="border-secondary opacity-25 my-4">
+                                
+                            <!-- Aquí inyectamos la lista que generamos arriba -->
+                            ${detallesHTML}
+                                
+                            <!-- Precio -->
+                            <div class="mb-4 text-center">
+                                <span class="h5 fw-bold text-white opacity-75">${proj.precio}</span>
+                            </div>
+                                
+                            <!-- Botón que se empuja hacia abajo con mt-auto -->
+                            <a href="#" class="btn btn-primary btn-sm text-uppercase ls-wide w-100 mt-auto py-3 rounded-3">
+                                Solicitar Propuesta
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            $portfolioEmprendedores.append(html);
+    });
+
+
+
+    const $adicionalesContainer = $('#adicionales-list');
+
+    // Ponemos el título y descripción
+    $('#adicionales-titulo').text(serviciosAdicionales.titulo);
+    $('#adicionales-desc').text(serviciosAdicionales.descripcion);
+
+    // Iteramos los items
+    $.each(serviciosAdicionales.items, function(index, item) {
+        const html = `
+            <div class="col-12" data-aos="fade-left" data-aos-delay="${index * 100}">
+                <div class="d-flex align-items-center justify-content-between p-3 mb-2 bg-dark border-start border-primary border-3 transition-hover">
+                    <div class="d-flex align-items-center">
+                        <i class="mdi ${item.icon} text-primary me-3 fs-4"></i>
+                        <span class="text-white fw-semibold">${item.nombre}</span>
+                    </div>
+                    <div class="text-end">
+                        <span class="text-primary fw-bold">${item.precio}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+        $adicionalesContainer.append(html);
+    });
+
     // ==========================================
     // 1. MOTOR DE VIDEOS (GALERÍA FILTRABLE)
     // ==========================================
