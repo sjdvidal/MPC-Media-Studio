@@ -129,6 +129,8 @@
             </div>
         </div>
     </section>
+
+
     <!-- Grilla de Portafolio -->
     <!-- Fíjate cómo al usar bg-dark ahora invoca tu Azul Marino corporativo -->
     <section id="work" class="py-5 bg-dark border-top border-dark border-2">
@@ -149,8 +151,46 @@
         </div>
     </section>
 
+    <!-- Segunda Grilla de Portafolio para Emprendedores -->
+    <section id="entrepeneur" class="py-5 bg-body border-top border-dark border-2">
+        <div class="container-fluid px-4 py-5">
+            <div class="row mb-5" data-aos="fade-down">
+                <div class="col-12 d-flex justify-content-between align-items-end">
+                    <div>
+                        <span class="small text-uppercase text-primary fw-semibold ls-widest d-block mb-2">Paquetes</span>
+                        <h6 class="display-6 fw-normal text-white mb-0">PUBLICIDAD PEQUEÑO EMPRESARIO</h6>
+                    </div>
+                    <!-- <a href="#" class="btn btn-outline-primary btn-sm text-uppercase ls-wide rounded-0 px-4 py-2">Ver Todo</a> -->
+                </div>
+            </div>
+            <!-- Grilla dinámica -->
+            <div class="row g-3" id="portfolio-emprendedores">
+                <!-- Se inyecta con jQuery -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Complementos y Servicios Adicionales -->
+     <!-- Se ve diferente porque al ser productos puntuales no sigue la estructura de paquete de los demas servicios -->
+    <section id="extras" class="py-5 my-5">
+        <div class="container py-5">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="small text-uppercase text-primary ls-widest d-block mb-2">Complementos</span>
+                <h2 id="adicionales-titulo" class="display-5 fw-bold text-white"></h2>
+                <p id="adicionales-desc" class="text-secondary"></p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div id="adicionales-list" class="row">
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer Minimalista -->
-    <footer id="contact" class="py-5 border-top border-dark border-2">
+    <footer id="contact" class="py-5 bg-body border-top border-dark border-2">
         <div class="container py-5 text-center" data-aos="zoom-in">
             <h6 class="display-5 fw-bold text-white mb-4">¿Hablamos del proyecto?</h6>
             <a href="mailto:mcpmediastudio@gmail.com" class="text-primary fs-4 text-decoration-none border-bottom border-primary pb-1 d-inline-block mb-5">
